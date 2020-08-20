@@ -670,11 +670,11 @@ class AddressSpace(object):
                 self.logger.warning("Tried to write attribute '%s' in %s, but the attribute is missing", attr, nodeid)
                 return ua.StatusCode(ua.StatusCodes.BadAttributeIdInvalid)
 
-            old = attval.value
+            # old = attval.value
             attval.value = value
-            cbs = []
+            # cbs = []
             # if old.Value != value.Value:  # only send call callback when a value change has happend
-            #     cbs = list(attval.datachange_callbacks.items())
+            cbs = list(attval.datachange_callbacks.items())
 
         for k, v in cbs:
             try:
